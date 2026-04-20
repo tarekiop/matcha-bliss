@@ -17,6 +17,10 @@ export type Database = {
       orders: {
         Row: {
           created_at: string
+          customer_email: string | null
+          customer_phone: string | null
+          delivery_address: string | null
+          fulfillment: Database["public"]["Enums"]["fulfillment_mode"]
           id: string
           items: Json
           status: Database["public"]["Enums"]["order_status"]
@@ -24,6 +28,10 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          customer_email?: string | null
+          customer_phone?: string | null
+          delivery_address?: string | null
+          fulfillment?: Database["public"]["Enums"]["fulfillment_mode"]
           id?: string
           items?: Json
           status?: Database["public"]["Enums"]["order_status"]
@@ -31,6 +39,10 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          customer_email?: string | null
+          customer_phone?: string | null
+          delivery_address?: string | null
+          fulfillment?: Database["public"]["Enums"]["fulfillment_mode"]
           id?: string
           items?: Json
           status?: Database["public"]["Enums"]["order_status"]
@@ -82,6 +94,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
+      fulfillment_mode: "pickup" | "delivery"
       order_status: "en_attente" | "complete"
       product_category: "matcha" | "cafe" | "patisserie" | "autre"
     }
@@ -211,6 +224,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      fulfillment_mode: ["pickup", "delivery"],
       order_status: ["en_attente", "complete"],
       product_category: ["matcha", "cafe", "patisserie", "autre"],
     },

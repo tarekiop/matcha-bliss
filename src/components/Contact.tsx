@@ -20,8 +20,8 @@ export function Contact() {
             <div className="flex items-start gap-4">
               <MapPin className="h-5 w-5 mt-0.5 shrink-0 text-primary-glow" />
               <div>
-                <div className="font-medium">12 rue des Cerisiers</div>
-                <div className="text-secondary-foreground/70">75011 Paris, France</div>
+                <div className="font-medium">70 Rue Germaine Tillion</div>
+                <div className="text-secondary-foreground/70">92700 Colombes, France</div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -49,7 +49,7 @@ export function Contact() {
         <div className="rounded-3xl overflow-hidden shadow-warm aspect-square md:aspect-auto md:min-h-[400px]">
           <iframe
             title="Carte Matcha & Co"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=2.3700%2C48.8540%2C2.3900%2C48.8640&layer=mapnik&marker=48.8590%2C2.3800"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=2.2445%2C48.9187%2C2.2645%2C48.9287&layer=mapnik&marker=48.9237%2C2.2545"
             className="w-full h-full border-0"
             loading="lazy"
           />

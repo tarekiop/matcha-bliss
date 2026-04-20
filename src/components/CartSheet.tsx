@@ -1,28 +1,14 @@
-import { X, Plus, Minus, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Minus, Trash2 } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/store/cart';
-import { supabase } from '@/integrations/supabase/client';
-import { toast } from 'sonner';
+import { CheckoutDialog } from './CheckoutDialog';
 
 export function CartSheet() {
-  const { items, isOpen, close, setQty, remove, subtotal, clear } = useCart();
+  const { items, isOpen, close, setQty, remove, subtotal } = useCart();
   const total = subtotal();
-
-  const handleOrder = async () => {
-    if (items.length === 0) return;
-    const { error } = await supabase.from('orders').insert({
-      total_price: total,
-      items: items.map((i) => ({ id: i.id, nom: i.nom, prix: i.prix, quantity: i.quantity })),
-    });
-    if (error) {
-      toast.error('Impossible de passer la commande');
-      return;
-    }
-    toast.success('Commande envoyée ! Merci 🍵');
-    clear();
-    close();
-  };
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   return (
     <Sheet open={isOpen} onOpenChange={(o) => (o ? null : close())}>
@@ -89,16 +75,18 @@ export function CartSheet() {
                 <span className="text-muted-foreground">Sous-total</span>
                 <span className="font-display text-3xl">{total.toFixed(2).replace('.', ',')} €</span>
               </div>
-              <Button variant="hero" size="lg" className="w-full" onClick={handleOrder}>
+              <Button variant="hero" size="lg" className="w-full" onClick={() => setCheckoutOpen(true)}>
                 Commander
               </Button>
               <p className="text-xs text-center text-muted-foreground">
-                Paiement à régler sur place ✦ Préparation en boutique
+                Paiement sécurisé ✦ Retrait boutique ou livraison gratuite
               </p>
             </div>
           </>
         )}
       </SheetContent>
+      <CheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
     </Sheet>
   );
 }
+
