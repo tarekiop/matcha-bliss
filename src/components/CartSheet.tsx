@@ -75,13 +75,20 @@ export function CartSheet() {
                 <span className="text-muted-foreground">Sous-total</span>
                 <span className="font-display text-3xl">{total.toFixed(2).replace('.', ',')} €</span>
               </div>
-              <Button variant="hero" size="lg" className="w-full" onClick={handleOrder}>
+              <Button variant="hero" size="lg" className="w-full" onClick={() => setCheckoutOpen(true)}>
                 Commander
               </Button>
               <p className="text-xs text-center text-muted-foreground">
-                Paiement à régler sur place ✦ Préparation en boutique
+                Paiement sécurisé ✦ Retrait boutique ou livraison gratuite
               </p>
             </div>
+          </>
+        )}
+      </SheetContent>
+      <CheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
+    </Sheet>
+  );
+}
           </>
         )}
       </SheetContent>
