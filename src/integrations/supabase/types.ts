@@ -14,7 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      orders: {
+        Row: {
+          created_at: string
+          id: string
+          items: Json
+          status: Database["public"]["Enums"]["order_status"]
+          total_price: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          items?: Json
+          status?: Database["public"]["Enums"]["order_status"]
+          total_price: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          items?: Json
+          status?: Database["public"]["Enums"]["order_status"]
+          total_price?: number
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          categorie: Database["public"]["Enums"]["product_category"]
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          nom: string
+          prix: number
+          stock_quantite: number
+          updated_at: string
+        }
+        Insert: {
+          categorie?: Database["public"]["Enums"]["product_category"]
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          nom: string
+          prix: number
+          stock_quantite?: number
+          updated_at?: string
+        }
+        Update: {
+          categorie?: Database["public"]["Enums"]["product_category"]
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          nom?: string
+          prix?: number
+          stock_quantite?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +82,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      order_status: "en_attente" | "complete"
+      product_category: "matcha" | "cafe" | "patisserie" | "autre"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +210,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      order_status: ["en_attente", "complete"],
+      product_category: ["matcha", "cafe", "patisserie", "autre"],
+    },
   },
 } as const
