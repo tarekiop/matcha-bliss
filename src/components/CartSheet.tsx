@@ -88,10 +88,3 @@ export function CartSheet() {
       <CheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
     </Sheet>
   );
-}
-          </>
-        )}
-      </SheetContent>
-    </Sheet>
-  );
-}
