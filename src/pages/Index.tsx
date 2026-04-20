@@ -22,7 +22,7 @@ const Index = () => {
             </p>
             <div className="grid grid-cols-3 gap-6 pt-4">
               {[
-                { n: '2019', l: 'Fondé' },
+                { n: '2026', l: 'Fondé' },
                 { n: 'Uji', l: 'Origine matcha' },
                 { n: 'Bio', l: 'Pâtisseries' },
               ].map((s) => (
