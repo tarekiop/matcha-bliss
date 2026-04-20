@@ -20,8 +20,8 @@ export function Contact() {
             <div className="flex items-start gap-4">
               <MapPin className="h-5 w-5 mt-0.5 shrink-0 text-primary-glow" />
               <div>
-                <div className="font-medium">12 rue des Cerisiers</div>
-                <div className="text-secondary-foreground/70">75011 Paris, France</div>
+                <div className="font-medium">70 Rue Germaine Tillion</div>
+                <div className="text-secondary-foreground/70">92700 Colombes, France</div>
               </div>
             </div>
             <div className="flex items-start gap-4">
