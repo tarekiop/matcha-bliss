@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Plus, Pencil, Trash2, AlertTriangle, LogOut, Package, Coins } from 'lucide-react';
+import { Plus, Pencil, Trash2, AlertTriangle, LogOut, Package, Coins, KeyRound } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,6 +12,8 @@ import { useProducts } from '@/hooks/useProducts';
 import { supabase } from '@/integrations/supabase/client';
 import type { Product, ProductCategory } from '@/types/product';
 import { CATEGORY_LABELS } from '@/types/product';
+import { ChangePasswordDialog } from '@/components/ChangePasswordDialog';
+import { clearAdminAuthenticated } from '@/lib/admin-auth';
 import { toast } from 'sonner';
 
 const EMPTY = {
