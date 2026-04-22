@@ -108,6 +108,9 @@ export default function Admin() {
           </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" onClick={() => navigate('/')}>Voir le site</Button>
+            <Button variant="outline" size="sm" onClick={() => setPasswordOpen(true)}>
+              <KeyRound className="h-4 w-4" /> Mot de passe
+            </Button>
             <Button variant="outline" size="sm" onClick={logout}>
               <LogOut className="h-4 w-4" /> Déconnexion
             </Button>
