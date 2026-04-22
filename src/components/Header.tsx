@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/store/cart';
+import logo from '@/assets/kalamoka-logo.png';
 
 export function Header() {
   const count = useCart((s) => s.count());
@@ -10,12 +11,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/50">
       <div className="container flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-full bg-matcha flex items-center justify-center shadow-matcha transition-smooth group-hover:scale-110">
-            <span className="font-display text-xl text-primary-foreground">M</span>
-          </div>
+        <Link to="/" className="flex items-center gap-3 group">
+          <img
+            src={logo}
+            alt="Logo Kalamoka"
+            className="w-12 h-12 rounded-xl object-cover shadow-sm transition-smooth group-hover:scale-105"
+          />
           <div className="leading-tight">
-            <div className="font-display text-2xl">Matcha &amp; Co</div>
+            <div className="font-display text-2xl">Kalamoka</div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground -mt-1">café · zen</div>
           </div>
         </Link>
