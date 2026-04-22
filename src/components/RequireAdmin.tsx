@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 export function RequireAdmin({ children }: { children: React.ReactNode }) {
-  const ok = sessionStorage.getItem('matcha_admin_auth') === '1';
-  if (!ok) return <Navigate to="/admin/login" replace />;
+  if (!isAdminAuthenticated()) return <Navigate to="/admin/login" replace />;
   return <>{children}</>;
 }

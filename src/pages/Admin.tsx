@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Plus, Pencil, Trash2, AlertTriangle, LogOut, Package, Coins } from 'lucide-react';
+import { Plus, Pencil, Trash2, AlertTriangle, LogOut, Package, Coins, KeyRound } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,6 +12,8 @@ import { useProducts } from '@/hooks/useProducts';
 import { supabase } from '@/integrations/supabase/client';
 import type { Product, ProductCategory } from '@/types/product';
 import { CATEGORY_LABELS } from '@/types/product';
+import { ChangePasswordDialog } from '@/components/ChangePasswordDialog';
+import { clearAdminAuthenticated } from '@/lib/admin-auth';
 import { toast } from 'sonner';
 
 const EMPTY = {
@@ -27,6 +29,7 @@ export default function Admin() {
   const navigate = useNavigate();
   const { products, loading } = useProducts();
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [passwordOpen, setPasswordOpen] = useState(false);
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState(EMPTY);
   const [saving, setSaving] = useState(false);
@@ -86,7 +89,7 @@ export default function Admin() {
   };
 
   const logout = () => {
-    sessionStorage.removeItem('matcha_admin_auth');
+    clearAdminAuthenticated();
     navigate('/admin/login');
   };
 
@@ -105,6 +108,9 @@ export default function Admin() {
           </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" onClick={() => navigate('/')}>Voir le site</Button>
+            <Button variant="outline" size="sm" onClick={() => setPasswordOpen(true)}>
+              <KeyRound className="h-4 w-4" /> Mot de passe
+            </Button>
             <Button variant="outline" size="sm" onClick={logout}>
               <LogOut className="h-4 w-4" /> Déconnexion
             </Button>
@@ -244,6 +250,8 @@ export default function Admin() {
           </form>
         </DialogContent>
       </Dialog>
+
+      <ChangePasswordDialog open={passwordOpen} onOpenChange={setPasswordOpen} />
     </div>
   );
 }

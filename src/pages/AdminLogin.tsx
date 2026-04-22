@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import { checkAdminCredentials, setAdminAuthenticated } from '@/lib/admin-auth';
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ export default function AdminLogin() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'admin') {
-      sessionStorage.setItem('matcha_admin_auth', '1');
+    if (checkAdminCredentials(username, password)) {
+      setAdminAuthenticated();
       navigate('/admin');
     } else {
       toast.error('Identifiants incorrects');
