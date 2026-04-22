@@ -250,6 +250,8 @@ export default function Admin() {
           </form>
         </DialogContent>
       </Dialog>
+
+      <ChangePasswordDialog open={passwordOpen} onOpenChange={setPasswordOpen} />
     </div>
   );
 }
