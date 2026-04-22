@@ -89,7 +89,7 @@ export default function Admin() {
   };
 
   const logout = () => {
-    sessionStorage.removeItem('matcha_admin_auth');
+    clearAdminAuthenticated();
     navigate('/admin/login');
   };
 
