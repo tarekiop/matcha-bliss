@@ -29,6 +29,7 @@ export default function Admin() {
   const navigate = useNavigate();
   const { products, loading } = useProducts();
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [passwordOpen, setPasswordOpen] = useState(false);
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState(EMPTY);
   const [saving, setSaving] = useState(false);
